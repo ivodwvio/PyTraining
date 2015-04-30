@@ -4,7 +4,6 @@ import random
 
 max_tryes = 10
 
-
 print('\nWelcome to Magic Number\nMenu')
 print('1: Start')
 print('2: Instructions')
