@@ -24,6 +24,7 @@ def display_menu_title(name, n = 20):
 
 def display_menu():
 	display_menu_title('MENU')
+	print()
 	print('1: New Game')
 	print('2: Settings')
 	print('3: Instructions')
@@ -77,7 +78,7 @@ def main():
 			tryes = 0
 			numbers = []
 
-			print('\nGame Start\n')
+			display_menu_title('Game Start', 27)
 			print('Help: start with MAX_VALUE / 2 =', middle)
 
 			while searching:
