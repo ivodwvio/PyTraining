@@ -34,8 +34,9 @@ def clear_screen():
 	os.system('cls')
 
 def instructions():
-	display_menu('Instructions', 30)
+	display_menu_title('Instructions', 30)
 	print('The computer have a number between 1 and MAX_VALUE.')
+	print('MAX_VALUE by default is 1000. You can set it in Settings.')
 	print('Your mission is to find the number.')
 
 def statistics(numbers, lucky):
@@ -51,6 +52,7 @@ def settings():
 	display_menu_title('Settings', 25)
 	answer = input('Do you want to change the MAX_VALUE?(y/n):')
 	if answer == 'y':
+		global MAX_VALUE
 		MAX_VALUE = int(input('new value = '))
 	elif answer == 'n':
 		return
