@@ -91,13 +91,11 @@ def main():
 						low = n
 						direction = Direction.Upwards
 					tryes += 1
-					print('Help: continue with',
-						'(high - low) / 2 + low =' if
-						direction == Direction.Downwards else
-						'(high - low) / 2 + low =',
-						round((high - low) / 2 + low)
-						if direction == Direction.Downwards else
-						round((high - low) / 2 + low))
+					print('\nHelp:')
+					print('High =', high)
+					print('Low =', low)
+					middle = round((high - low) / 2 + low)
+					print('Middle =', middle)
 					print()
 			statistics(numbers, lucky)
 		elif choice == MenuItems.Settings:
