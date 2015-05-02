@@ -1,6 +1,7 @@
 # MagicNumber.py
 
 import random
+import os
 from enum import IntEnum
 
 MAX_VALUE = 1000
@@ -28,6 +29,9 @@ def display_menu():
 	print('3: Instructions')
 	print('4: Exit')
 
+def clear_screen():
+	os.system('cls')
+
 def instructions():
 	display_menu('Instructions', 30)
 	print('The computer have a number between 1 and MAX_VALUE.')
@@ -53,6 +57,7 @@ def settings():
 		print('Invalid ansewr.')
 
 def main():
+	clear_screen()
 	print('\nWelcome to Magic Number')
 	running = True
 	direction = Direction.Idle
