@@ -70,14 +70,12 @@ def main():
 		choice = int(input('> '))
 
 		if choice == MenuItems.NewGame:
-			lucky = random.randint(0, MAX_VALUE)
-			
+			low = 0
+			high = MAX_VALUE
+			lucky = random.randint(low, high)
 			searching = True
 			tryes = 0
-			high = MAX_VALUE
-			low = 0
-			middle = round(MAX_VALUE / 2)
-			tryes = 0
+			middle = round(high / 2)
 			numbers = []
 
 			display_menu_title('Game Start', 27)
