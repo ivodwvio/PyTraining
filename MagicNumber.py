@@ -21,10 +21,10 @@ def display_menu_title(name, n = 20):
 	print('\n' + n * '*')
 	print('\t' + name)
 	print(n * '*')
+	print()
 
 def display_menu():
 	display_menu_title('MENU')
-	print()
 	print('1: New Game')
 	print('2: Settings')
 	print('3: Instructions')
@@ -35,7 +35,7 @@ def clear_screen():
 
 def instructions():
 	display_menu_title('Instructions', 30)
-	print('The computer have a number between 1 and MAX_VALUE.')
+	print('The computer have a number between 0 and MAX_VALUE.')
 	print('MAX_VALUE by default is 1000. You can set it in Settings.')
 	print('Your mission is to find the number.')
 
@@ -57,7 +57,7 @@ def settings():
 	elif answer == 'n':
 		return
 	else:
-		print('Invalid ansewr.')
+		print('Invalid answer.')
 
 def main():
 	clear_screen()
@@ -70,12 +70,12 @@ def main():
 		choice = int(input('> '))
 
 		if choice == MenuItems.NewGame:
-			lucky = random.randint(1, MAX_VALUE)
+			lucky = random.randint(0, MAX_VALUE)
 			
 			searching = True
 			tryes = 0
 			high = MAX_VALUE
-			low = 1
+			low = 0
 			middle = round(MAX_VALUE / 2)
 			tryes = 0
 			numbers = []
