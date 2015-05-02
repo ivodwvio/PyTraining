@@ -47,7 +47,7 @@ def statistics(numbers, lucky):
 				else 'EQUAL'))
 
 def settings():
-	display_menu('Settings')
+	display_menu_title('Settings', 25)
 	answer = input('Do you want to change the MAX_VALUE?(y/n):')
 	if answer == 'y':
 		MAX_VALUE = int(input('new value = '))
@@ -69,17 +69,26 @@ def main():
 		if choice == MenuItems.NewGame:
 			lucky = random.randint(1, MAX_VALUE)
 			
-			print('\nGame Start\n')
-			print('Help: start with MAX_VALUE / 2 =', round(MAX_VALUE / 2))
 			searching = True
 			tryes = 0
 			high = MAX_VALUE
 			low = 1
+			middle = round(MAX_VALUE / 2)
 			tryes = 0
 			numbers = []
 
+			print('\nGame Start\n')
+			print('Help: start with MAX_VALUE / 2 =', middle)
+
 			while searching:
 				n = int(input('Guess {}: '.format(tryes + 1)))
+				if n < 0:
+					print('Number can\'t be negative.\n')
+					continue
+				elif n <= low or n >= high:
+					print('Number is not between high and low values.\n')
+					continue
+
 				numbers.append(n)
 				print('Result =', end = ' ')
 				if n == lucky:
@@ -96,12 +105,12 @@ def main():
 						low = n
 						direction = Direction.Upwards
 					tryes += 1
-					print('\nHelp:')
-					print('High =', high)
-					print('Low =', low)
+					print('Help:', end = ' ')
+					print('High =', high, end = ' ')
+					print('Low =', low, end = ' ')
 					middle = round((high - low) / 2 + low)
 					print('Middle =', middle)
-					print()
+					print('Possible numbers count:', high - low - 1, end = '\n\n')
 			statistics(numbers, lucky)
 		elif choice == MenuItems.Settings:
 			settings()
