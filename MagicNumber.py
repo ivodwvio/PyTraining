@@ -6,11 +6,6 @@ from enum import IntEnum
 
 MAX_VALUE = 1000
 
-class Direction(IntEnum):
-	Idle = 0
-	Upwards = 1
-	Downwards = 2
-
 class MenuItems(IntEnum):
 	NewGame = 1
 	Settings = 2
@@ -63,7 +58,6 @@ def main():
 	clear_screen()
 	print('\nWelcome to Magic Number')
 	running = True
-	direction = Direction.Idle
 
 	while running:
 		display_menu()
@@ -95,16 +89,13 @@ def main():
 				if n == lucky:
 					print('EQUAL')
 					searching = False
-					direction = Direction.Idle
 				else:
 					if n > lucky:
 						print('HIGH')
 						high = n
-						direction = Direction.Downwards
 					else:
 						print('LOW')
 						low = n
-						direction = Direction.Upwards
 					tryes += 1
 					print('Help:', end = ' ')
 					print('High =', high, end = ' ')
