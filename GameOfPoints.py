@@ -1,6 +1,7 @@
 # GameOfPoints.py
 
-from MagicNumber import clear_screen, display_program_title, display_menu
+from MagicNumber import clear_screen,
+	display_program_title, display_menu, exit, get_input
 from enum import IntEnum
 import random
 
@@ -13,7 +14,15 @@ class MenuItems(IntEnum):
 	Exit = 6
 
 def addition():
-	pass
+	print('Points:', points)
+	a = random.randint(1, 100)
+	b = random.randint(1, 100)
+	result = int(input('Task: {} + {} = '.format(a, b)))
+	if result == a + b:
+		points += 1
+	elif result == 0:
+		running = False
+	print()
 
 def subtraction():
 	pass
@@ -27,25 +36,18 @@ def division():
 def mix():
 	pass
 
+running = True
+
 def main():
 	clear_screen()
 	display_program_title('Welcome to Game Of Points')
-	running = True
 	points = 0
 	a = b = 0
 
 	while running:
 		display_menu(['Addition', 'Subtraction', 'Multiplication', 'Division', 'Mix', 'Exit'])
-		choice = int(input('> '))
+		get_input([addition, subtraction, multiplication, division, mix, exit])
 
-		print('Points:', points)
-		a = random.randint(1, 100)
-		b = random.randint(1, 100)
-		result = int(input('Task: {} + {} = '.format(a, b)))
-		if result == a + b:
-			points += 1
-		elif result == 0:
-			running = False
-		print()
+	print('Goodbye.')	
 
 if __name__ == '__main__': main()

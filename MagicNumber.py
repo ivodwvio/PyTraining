@@ -16,10 +16,9 @@ def display_program_title(name):
 	print('\n' + name)
 
 def display_menu_title(name, n = 20):
-	print('\n' + n * '*')
-	print('\t' + name)
-	print(n * '*')
-	print()
+	print('\n' + n * '*' + '\n\t' + name + '\n' + n * '*' + '\n')
+	#print('\t' + name)
+	#print(n * '*' + '\n')
 
 def display_menu(items, name = 'MENU'):
 	display_menu_title(name)
