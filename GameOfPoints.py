@@ -14,6 +14,8 @@ class MenuItems(IntEnum):
 	Exit = 6
 
 def addition():
+	points = 0
+	a = b = 0
 	print('Points:', points)
 	a = random.randint(1, 100)
 	b = random.randint(1, 100)
@@ -40,14 +42,10 @@ running = True
 
 def main():
 	clear_screen()
-	display_program_title('Welcome to Game Of Points')
-	points = 0
-	a = b = 0
+	display_program_title('Welcome to Game Of Points')	
 
 	while running:
 		display_menu(['Addition', 'Subtraction', 'Multiplication', 'Division', 'Mix', 'Exit'])
 		get_input([addition, subtraction, multiplication, division, mix, exit])
-
-	print('Goodbye.')	
 
 if __name__ == '__main__': main()

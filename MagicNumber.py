@@ -1,32 +1,10 @@
 # MagicNumber.py
 
 import random
-import os
-from enum import IntEnum
+from Engine import program_cycle
+from Engine import display_menu_title
 
 MAX_VALUE = 100
-
-class MenuItems(IntEnum):
-	NewGame = 1
-	Settings = 2
-	Instructions = 3
-	Exit = 4
-
-def display_program_title(name):
-	print('\n' + name)
-
-def display_menu_title(name, n = 20):
-	print('\n' + n * '*' + '\n\t' + name + '\n' + n * '*' + '\n')
-	#print('\t' + name)
-	#print(n * '*' + '\n')
-
-def display_menu(items, name = 'MENU'):
-	display_menu_title(name)
-	for n in range(len(items)):
-		print('{}: {}'.format(n + 1, items[n]))
-
-def clear_screen():
-	os.system('cls')
 
 def instructions():
 	display_menu_title('Instructions', 30)
@@ -97,23 +75,12 @@ def new_game():
 	statistics(numbers, lucky)
 
 def exit():
-	global running
-	running = False
-
-def get_input(funcs):
-	choice = int(input('> '))
-	funcs[choice - 1]()
-
-running = True
+	print('Goodbye')
+	return 'exit'
 
 def main():
-	clear_screen()
-	display_program_title('Welcome to Magic Number')
-
-	while running:
-		display_menu(['New Game', 'Settings', 'Instructions', 'Exit'])
-		get_input([new_game, settings, instructions, exit])
-
-	print('Goodbye.')
+	menu_items = ['New Game', 'Settings', 'Instructions', 'Exit']
+	menu_funcs = [new_game, settings, instructions, exit]
+	program_cycle('Welcome to Magic Number', menu_items, menu_funcs)
 
 if __name__ == '__main__': main()
