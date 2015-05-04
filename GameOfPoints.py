@@ -1,30 +1,27 @@
 # GameOfPoints.py
 
-from MagicNumber import clear_screen,
-	display_program_title, display_menu, exit, get_input
-from enum import IntEnum
 import random
+from Engine import program_cycle
+from Engine import display_menu_title
 
-class MenuItems(IntEnum):
-	Addition = 1
-	Subtraction = 2
-	Multiplication = 3
-	Division = 4
-	Mix = 5
-	Exit = 6
+points = 0
 
 def addition():
-	points = 0
-	a = b = 0
-	print('Points:', points)
-	a = random.randint(1, 100)
-	b = random.randint(1, 100)
-	result = int(input('Task: {} + {} = '.format(a, b)))
-	if result == a + b:
-		points += 1
-	elif result == 0:
-		running = False
-	print()
+	display_menu_title('Addition', 25)
+	print('Answer with 0 if you want to stop.')
+	running = True
+	global points
+	while running:
+		a = b = 0
+		print('Points:', points)
+		a = random.randint(1, 100)
+		b = random.randint(1, 100)
+		result = int(input('Task: {} + {} = '.format(a, b)))
+		if result == a + b:
+			points += 1
+		elif result == 0:
+			running = False
+		print()
 
 def subtraction():
 	pass
@@ -38,14 +35,14 @@ def division():
 def mix():
 	pass
 
-running = True
+def statistics():
+	global points
+	display_menu_title('Statistics', 30)
+	print('Points:', points)
 
 def main():
-	clear_screen()
-	display_program_title('Welcome to Game Of Points')	
-
-	while running:
-		display_menu(['Addition', 'Subtraction', 'Multiplication', 'Division', 'Mix', 'Exit'])
-		get_input([addition, subtraction, multiplication, division, mix, exit])
+	menu_items = ['Addition', 'Subtraction', 'Multiplication', 'Division', 'Mix', 'Statistics']
+	menu_funcs = [addition, subtraction, multiplication, division, mix, statistics]
+	program_cycle('Welcome to Game Of Points', menu_items, menu_funcs)
 
 if __name__ == '__main__': main()
