@@ -74,13 +74,9 @@ def new_game():
 			print('Possible numbers count:', high - low - 1, end = '\n\n')
 	statistics(numbers, lucky)
 
-def exit():
-	print('Goodbye')
-	return 'exit'
-
 def main():
-	menu_items = ['New Game', 'Settings', 'Instructions', 'Exit']
-	menu_funcs = [new_game, settings, instructions, exit]
+	menu_items = ['New Game', 'Settings', 'Instructions']
+	menu_funcs = [new_game, settings, instructions]
 	program_cycle('Welcome to Magic Number', menu_items, menu_funcs)
 
 if __name__ == '__main__': main()

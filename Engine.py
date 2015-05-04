@@ -18,15 +18,24 @@ def display_menu(items, name = 'MENU'):
 
 def get_input(funcs):
 	choice = int(input('> '))
-	funcs[choice - 1]()
+	if choice > len(funcs) or choice < 0:
+		print('Invalid input.')
+	else:
+		funcs[choice - 1]()
+
+def exit():
+	global running
+	running = False
+	print('Goodbye')
 
 running = True
 
 def program_cycle(program_title, menu_items, funcs):
 	clear_screen()
 	display_program_title(program_title)
+	menu_items.append('Exit')
+	funcs.append(exit)
 
 	while running:
 		display_menu(menu_items)
-		if get_input(funcs) == 'exit':
-			break
+		get_input(funcs)
